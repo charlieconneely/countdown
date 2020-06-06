@@ -4,9 +4,6 @@
 import dictionary_parser
 import random
 
-# TO DO
-# check if users word is within the nine letters provided
-
 def main():
     words = dictionary_parser.parse("words.txt")
     found = True
@@ -19,7 +16,9 @@ def main():
     print(nine_letters_string)
 
     input_word = input("Enter your word: ")
+    input_word = input_word.lower()
     input_word_split = split(input_word)
+
 
     # Check if each character sees itself in the nine_letters
     for char in input_word_split:
@@ -49,6 +48,7 @@ def rachel():
 
     while x < 9:
         choice = input("Vowel or Consonant? (v/c): ")
+        choice = choice.lower()
         if choice == 'v':
             letternum = random.randint(0, len(vowels)-1)
             letter = vowels[letternum]
