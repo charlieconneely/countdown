@@ -9,21 +9,26 @@ import random
 
 def main():
     words = dictionary_parser.parse("words.txt")
-    found = False
+    found = True
 
     nine_letters = rachel()
     # convert array to string
-    nine_letters = ''.join(nine_letters)
+    nine_letters_string = ''.join(nine_letters)
     # convert to uppercase
-    nine_letters = nine_letters.upper()
-    print(nine_letters)
+    nine_letters_string = nine_letters_string.upper()
+    print(nine_letters_string)
 
     input_word = input("Enter your word: ")
+    input_word_split = split(input_word)
 
-    if input_word in words:
-        found = True
+    # Check if each character sees itself in the nine_letters
+    for char in input_word_split:
+        if char in nine_letters:
+            nine_letters.remove(char)
+        else:
+            found = False
 
-    if found:
+    if input_word in words and found == True:
         if (len(input_word) < 6):
             print("Good job! Length: " + str(len(input_word)))
         else:
@@ -31,11 +36,16 @@ def main():
     else:
         print("word not found")
 
+# convert string to list of chars
+def split(word):
+    return [char for char in word]
+
 def rachel():
     x = 0
     letters = []
     vowels = ['a','e','i','o','u']
-    consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','x','z','w','y']
+    consonants = ['b','c','d','f','g','h','j','k','l','m',
+                'n','p','q','r','s','t','v','x','z','w','y']
 
     while x < 9:
         choice = input("Vowel or Consonant? (v/c): ")
