@@ -4,7 +4,7 @@
 import dictionary_parser
 import random
 
-def main():
+def main(name):
     words = dictionary_parser.parse("words.txt")
     found = True
 
@@ -29,7 +29,8 @@ def main():
     if found:
         if input_word in words:
             if (len(input_word) < 6):
-                print("Good job! Length: " + str(len(input_word)))
+                print("Good job "+str(name)+"! Length: " +\
+                        str(len(input_word)))
             else:
                 print("Great word! Length: " + str(len(input_word)))
         else:
@@ -47,6 +48,8 @@ def rachel():
     vowels = ['a','e','i','o','u']
     consonants = ['b','c','d','f','g','h','j','k','l','m',
             'n','p','q','r','s','t','v','x','z','w','y']
+
+    print("\nRachel, the letters please!\n")
 
     while x < 9:
         choice = input("Vowel or Consonant? (v/c): ")
@@ -67,7 +70,18 @@ def rachel():
             print("Invalid entry. Try again.")
     return letters
 
+def intro():
+    print("\nLet's Play Countdown!\n")
+    name = input("Enter your name here: ")
+    return name
+
 if __name__ == "__main__":
-    main()
+    name = intro()
+    while True:
+        main(name)
+        choice = input("\nWould you like to play again? (y/n):")
+        choice = choice.lower()
+        if (choice == 'n'):
+            break
 
 
