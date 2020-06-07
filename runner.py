@@ -19,7 +19,6 @@ def main():
     input_word = input_word.lower()
     input_word_split = split(input_word)
 
-
     # Check if each character sees itself in the nine_letters
     for char in input_word_split:
         if char in nine_letters:
@@ -27,13 +26,16 @@ def main():
         else:
             found = False
 
-    if input_word in words and found == True:
-        if (len(input_word) < 6):
-            print("Good job! Length: " + str(len(input_word)))
+    if found:
+        if input_word in words:
+            if (len(input_word) < 6):
+                print("Good job! Length: " + str(len(input_word)))
+            else:
+                print("Great word! Length: " + str(len(input_word)))
         else:
-            print("Great word! Length: " + str(len(input_word)))
+            print("Word not found in dictionary")
     else:
-        print("word not found")
+        print("Word not present")
 
 # convert string to list of chars
 def split(word):
@@ -44,7 +46,7 @@ def rachel():
     letters = []
     vowels = ['a','e','i','o','u']
     consonants = ['b','c','d','f','g','h','j','k','l','m',
-                'n','p','q','r','s','t','v','x','z','w','y']
+            'n','p','q','r','s','t','v','x','z','w','y']
 
     while x < 9:
         choice = input("Vowel or Consonant? (v/c): ")
