@@ -87,8 +87,9 @@ def rachel():
 
 def intro():
     name = str(input("Enter your name here: "))
-    print("Welcome "+name+"!!\nLet's Play Countdown!\n")
+    print("Welcome "+name+"!\nLet's Play Countdown!!\n")
     return name
+
 
 if __name__ == "__main__":
     name = intro()
