@@ -2,7 +2,7 @@
 # Anagram game
 
 import dictionary_parser
-import random
+from rachel import Rachel
 
 dictionary = dictionary_parser.parse("words.txt")
 
@@ -10,8 +10,9 @@ def main(name):
     words = dictionary
     found = True
 
+    rachel = Rachel()
     # retrieve array of letters
-    nine_letters = rachel()
+    nine_letters = rachel.give_the_letters(9)
     # convert array to string
     nine_letters_string = ''.join(nine_letters)
     print(nine_letters_string)
@@ -63,31 +64,6 @@ def get_random_consonant():
     # select consonant at that index
     letter = consonants[letternum]
     return letter
-
-def rachel():
-    x = 0
-    letters = []
-
-    print("\nRachel, the letters please!\n")
-
-    while x < 9:
-        choice = input("Vowel or Consonant? (v/c): ")
-        choice = choice.lower()
-        if choice == 'v':
-            letter = get_random_vowel()
-            # append letter to list of letters
-            letters.append(letter)
-            x += 1
-            print(letter)
-        elif choice == 'c':
-            letter = get_random_consonant()
-            # append letter to list of letters
-            letters.append(letter)
-            x += 1
-            print(letter)
-        else:
-            print("Invalid entry. Try again.")
-    return letters
 
 def find_other_words(letters):
     word_found = True
