@@ -29,12 +29,9 @@ def main(name):
         message = dictionary.check_word(name, input_word)
         print(message)
 
-    print("----------")
-    print(original_letters)
-    print("----------")
     other_words = dictionary.find_other_words(original_letters)
 
-    print("\nHere are some other words: ")
+    print("\nHere are some words we found: ")
     for word in other_words:
         print(word)
 

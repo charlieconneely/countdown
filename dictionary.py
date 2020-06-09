@@ -25,12 +25,10 @@ class Dictionary:
         return message
 
     def find_other_words(self, letters):
-        word_found = True
         original_letters = []
+        # back-up original 9 letters
         for l in letters:
             original_letters.append(l)
-
-        print(letters)
 
         for word in dictionary:
             if (len(word) > 4):
