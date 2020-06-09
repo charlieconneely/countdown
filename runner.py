@@ -4,8 +4,10 @@
 import dictionary_parser
 import random
 
+dictionary = dictionary_parser.parse("words.txt")
+
 def main(name):
-    words = dictionary_parser.parse("words.txt")
+    words = dictionary
     found = True
 
     # retrieve array of letters
@@ -43,7 +45,7 @@ def main(name):
         else:
             print("Word not found in dictionary")
 
-    find_other_words(words, nine_letters)
+    find_other_words(nine_letters)
 
 def get_random_vowel():
     vowels = ['A','E','I','O','U']
@@ -87,7 +89,7 @@ def rachel():
             print("Invalid entry. Try again.")
     return letters
 
-def find_other_words(dictionary, letters):
+def find_other_words(letters):
     word_found = True
     others = set()
     letters_original = letters
@@ -114,15 +116,18 @@ def intro():
 
 if __name__ == "__main__":
     name = intro()
+    ready_to_play = True
     while True:
-        main(name)
-        while True:
-            choice = input("\nWould you like to play again? (y/n):")
-            choice = choice.lower()
-            if choice == 'n' or choice == 'y':
-                break
-            else:
-                print("Invalid input. Please try again.")
-        if (choice == 'n'):
+        if ready_to_play:
+            main(name)
+
+        choice = input("\nWould you like to play again? (y/n):")
+        choice = choice.lower()
+        if choice not in ["y", "n"]:
+            ready_to_play = False
+            print("Invalid input. Please try again.")
+        elif (choice == 'y'):
+            ready_to_play = True
+        else:
             break
 
