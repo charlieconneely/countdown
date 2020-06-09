@@ -45,12 +45,26 @@ def main(name):
 
     find_other_words(words, nine_letters)
 
+def get_random_vowel():
+    vowels = ['A','E','I','O','U']
+    # generate random number
+    letternum = random.randint(0, len(vowels)-1)
+    # select vowel at that index
+    letter = vowels[letternum]
+    return letter
+
+def get_random_consonant():
+    consonants = ['B','C','D','F','G','H','J','K','L','M',
+                  'N','P','Q','R','S','T','V','X','Z','W','Y']
+    # generate random number
+    letternum = random.randint(0, len(consonants)-1)
+    # select consonant at that index
+    letter = consonants[letternum]
+    return letter
+
 def rachel():
     x = 0
     letters = []
-    vowels = ['A','E','I','O','U']
-    consonants = ['B','C','D','F','G','H','J','K','L','M',
-            'N','P','Q','R','S','T','V','X','Z','W','Y']
 
     print("\nRachel, the letters please!\n")
 
@@ -58,23 +72,17 @@ def rachel():
         choice = input("Vowel or Consonant? (v/c): ")
         choice = choice.lower()
         if choice == 'v':
-            # generate random number
-            letternum = random.randint(0, len(vowels)-1)
-            # select vowel at that index
-            letter = vowels[letternum]
+            letter = get_random_vowel()
             # append letter to list of letters
             letters.append(letter)
-            x = x + 1
+            x += 1
             print(letter)
         elif choice == 'c':
-            # generate random number
-            letternum = random.randint(0, len(consonants)-1)
-            # select consonant at that index
-            letter = consonants[letternum]
+            letter = get_random_consonant()
             # append letter to list of letters
             letters.append(letter)
+            x += 1
             print(letter)
-            x = x + 1
         else:
             print("Invalid entry. Try again.")
     return letters
@@ -117,5 +125,4 @@ if __name__ == "__main__":
                 print("Invalid input. Please try again.")
         if (choice == 'n'):
             break
-
 
