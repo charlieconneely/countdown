@@ -12,8 +12,6 @@ def main(name):
     nine_letters = rachel()
     # convert array to string
     nine_letters_string = ''.join(nine_letters)
-    # convert to uppercase
-    #nine_letters_string = nine_letters_string.upper()
     print(nine_letters_string)
 
     input_word = input("Enter your word: ")
@@ -30,6 +28,7 @@ def main(name):
             nine_letters.remove(char)
         else:
             found = False
+            break
 
     if found:
         # convert word back to lower
@@ -46,6 +45,8 @@ def main(name):
             print("Word not found in dictionary")
     else:
         print("Word not present")
+
+    find_other_words(words, nine_letters)
 
 # convert string to list of chars
 def split(word):
@@ -85,11 +86,30 @@ def rachel():
             print("Invalid entry. Try again.")
     return letters
 
+def find_other_words(dictionary, letters):
+    word_found = True
+    others = set()
+    letters_original = letters
+    for word in dictionary:
+        if len(word) > 4:
+            letters = letters_original
+            split_word = split(word)
+            for c in split_word:
+                if c in letters:
+                    letters.remove(c)
+                else:
+                    word_found = False
+                    break
+        if word_found:
+            others.add(word)
+
+
+    return others
+
 def intro():
     name = str(input("Enter your name here: "))
     print("Welcome "+name+"!\nLet's Play Countdown!!\n")
     return name
-
 
 if __name__ == "__main__":
     name = intro()
