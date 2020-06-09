@@ -5,7 +5,7 @@ class Rachel:
         self.letters = []
 
     def __get_random_vowel(self):
-        vowels = ['A','E','I','O','U']
+        vowels = ['a','e','i','o','u']
         # generate random number
         random_number = randint(0, len(vowels)-1)
         # select vowel at that index
@@ -13,8 +13,8 @@ class Rachel:
         return letter
 
     def __get_random_consonant(self):
-        consonants = ['B','C','D','F','G','H','J','K','L','M',
-                      'N','P','Q','R','S','T','V','X','Z','W','Y']
+        consonants = ['b','c','d','f','g','h','j','k','l','m',
+                      'n','p','q','r','s','t','v','x','z','w','y']
         # generate random number
         random_number = randint(0, len(consonants)-1)
         # select consonant at that index
