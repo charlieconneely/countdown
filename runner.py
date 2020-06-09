@@ -18,7 +18,7 @@ def main(name):
     # convert to upper case
     input_word = input_word.upper()
     # convert word to array of chars for inspection
-    input_word_split = split(input_word)
+    input_word_split = list(input_word)
 
     # check if each letter sees itself on the board
     for char in input_word_split:
@@ -28,6 +28,7 @@ def main(name):
             nine_letters.remove(char)
         else:
             found = False
+            print("The letters used don't match with the given ones")
             break
 
     if found:
@@ -36,21 +37,13 @@ def main(name):
         # check if the word is in the dictionary
         if input_word in words:
             if (len(input_word) < 6):
-                print("Good job "+name+"! Length: " +\
-                        str(len(input_word)))
+                print("Good job {}! Length: {}".format(name, len(input_word)))
             else:
-                print("Great word "+name+"! Length: "\
-                        + str(len(input_word)))
+                print("Great word {}! Length: {}".format(name, len(input_word)))
         else:
             print("Word not found in dictionary")
-    else:
-        print("Word not present")
 
     find_other_words(words, nine_letters)
-
-# convert string to list of chars
-def split(word):
-    return [char for char in word]
 
 def rachel():
     x = 0
@@ -93,7 +86,7 @@ def find_other_words(dictionary, letters):
     for word in dictionary:
         if len(word) > 4:
             letters = letters_original
-            split_word = split(word)
+            split_word = list(word)
             for c in split_word:
                 if c in letters:
                     letters.remove(c)
