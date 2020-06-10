@@ -28,13 +28,18 @@ def main(name):
         # check if the word is in the dictionary
         message = dictionary.check_word(name, input_word)
         print(message)
+    else:
+        print("This word isn't present!")
 
     other_words = dictionary.find_other_words(original_letters)
-    other_words.sort(key=len, reverse=True)
 
-    print("\nHere are some words we found: ")
-    for word in other_words:
-        print(word)
+    if len(other_words) == 0:
+        print("\nWe didn't find anything!\n")
+    else:
+        other_words.sort(key=len, reverse=True)
+        print("\nHere are some words we found: ")
+        for word in other_words:
+            print("- "+word)
 
 def intro():
     name = str(input("Enter your name here: "))
