@@ -30,6 +30,7 @@ def main(name):
         print(message)
 
     other_words = dictionary.find_other_words(original_letters)
+    other_words.sort(key=len, reverse=True)
 
     print("\nHere are some words we found: ")
     for word in other_words:
