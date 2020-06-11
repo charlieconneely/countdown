@@ -18,8 +18,7 @@ def main(name):
     print(''.join(nine_letters).upper())
 
 
-    input_word = input("Enter your word: ")
-    input_word = input_word.lower()
+    input_word = input("Enter your word: ").lower()
 
     # check if each letter sees itself on the board
     found = dictionary.compare_words(nine_letters, input_word)
@@ -34,7 +33,7 @@ def main(name):
     other_words = dictionary.find_other_words(original_letters)
 
     if len(other_words) == 0:
-        print("\nWe didn't find anything!\n")
+        print("\nWe didn't find anything worth noting!\n")
     else:
         other_words.sort(key=len, reverse=True)
         print("\nHere are some words we found: ")

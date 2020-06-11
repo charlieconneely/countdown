@@ -7,7 +7,7 @@ dictionary = dictionary_parser.parse("words.txt")
 class Dictionary:
     def __init__(self):
         self.words = []
-        message = ""
+        self.message = ""
 
     def check_word(self, name, word):
         word = word.lower()
@@ -19,9 +19,9 @@ class Dictionary:
 
     def check_length(self, name, word):
         if (len(word) > 5):
-            message = "Good job "+str(name)+"! Length: " + str(len(word))
-        else:
             message = "Great work "+str(name)+"! Length: " + str(len(word))
+        else:
+            message = "Good job "+str(name)+"! Length: " + str(len(word))
         return message
 
     def find_other_words(self, letters):
@@ -31,7 +31,7 @@ class Dictionary:
             original_letters.append(l)
 
         for word in dictionary:
-            if (len(word) > 4):
+            if (len(word) > 5):
                 # clear array
                 letters = []
                 # restore array

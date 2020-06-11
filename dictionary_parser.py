@@ -6,6 +6,7 @@ def parse(f):
     words = file.read().split()
     file.close()
 
+    x = 4
     return words
 
 if __name__ == "__main__":

@@ -1,0 +1,173 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'preservim/nerdtree'
+Plug 'mattn/emmet-vim'
+Plug 'dracula/vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/seoul256.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
+" automatically read changes in the file
+set autoread
+
+" no wrap
+set nowrap
+
+" change buffers without saving
+set hidden
+
+"encoding
+set fileencoding=utf-8
+set encoding=utf-8
+
+"tab size
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=8
+
+" tabs = spaces
+set expandtab
+
+" backspace behaviour
+set backspace=indent,eol,start
+
+" turn syntax highlight on
+syntax on
+
+"automatic indentation
+filetype plugin indent on
+
+"line numbers
+set number
+
+" incremental search
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" turn off highlight search (Space + n)
+nmap <silent> <Space>n :nohls<CR>
+
+" leader key
+let mapleader="\<Space>"
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'jellybeans'
+let g:airline_skip_empty_sections = 1
+
+" coc
+let g:coc_global_extensions = ['coc-clangd', 'coc-explorer', 'coc-eslint', 'coc-emmet', 'coc-python', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']
+
+" emmet key
+let g:user_emmet_leader_key=','
+
+"no swap files
+set nobackup
+set noswapfile
+
+" show commands
+set showcmd
+
+"shell
+if exists('$SHELL')
+  set shell=$SHELL
+else
+  set shell=/bin/sh
+endif
+
+" colorscheme
+" colorscheme seoul256-light
+" colorscheme peachpuff
+" colorscheme base16-railscasts
+" colorscheme base16-dracula
+colorscheme base16-helios
+set termguicolors
+
+" ruler
+let &colorcolumn="80,".join(range(120,999),",")
+
+" disable mouse
+set mousemodel=popup
+set mousehide
+
+" disable menu
+set guioptions=egmrti
+
+" disable blinking cursor
+set gcr=a:blinkon0
+
+" visible line around cursor
+set scrolloff=5
+
+" remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup END
+
+" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>x :bn<CR>
+
+" Close buffer
+noremap <leader>q :bd<CR>
+
+" Disable automatic commenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+" file searcher
+nnoremap <silent> <leader>f :FZF<CR>
+" see open files
+nnoremap <silent> <leader>b :Buffers<CR>
+" search through files
+nnoremap <leader>a :Ag<Space>
+
+" clipboard
+set clipboard=unnamed,unnamedplus
+
+" switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+  map <C-x> <C-W><
+  map <C-z> <C-W>>
+endif
+
+" vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+" fix css highlight problems
+augroup VimCSS3Syntax
+  autocmd!
+  autocmd FileType css setlocal iskeyword+=-
+  autocmd FileType scss set iskeyword+=-
+augroup END
+
+" Automatically deletes all tralling whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" Diff ignore whitespaces
+set diffopt+=iwhite
+
+map <C-n> :NERDTreeToggle<CR>
+map <F5> :w <CR> :!gcc % -o %< && ./%< <CR>
+
+" No fillchars
+set fillchars=""
