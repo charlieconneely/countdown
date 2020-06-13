@@ -22,7 +22,7 @@ class Rachel:
         return letter
 
     def give_the_letters(self, number_of_letters):
-
+        self.letters = []
         print("\nRachel, the letters please!\n")
         quantity_of_letters_given = 0
         while quantity_of_letters_given < number_of_letters:

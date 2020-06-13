@@ -27,6 +27,7 @@ class Dictionary:
 
     def find_other_words(self, letters):
         original_letters = []
+        self.words = []
         # back-up original 9 letters
         for l in letters:
             original_letters.append(l)

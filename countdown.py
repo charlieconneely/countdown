@@ -5,15 +5,17 @@ import dictionary_parser
 from rachel import Rachel
 from dictionary import Dictionary
 
+dictionary = Dictionary()
+rachel = Rachel()
+
 class Countdown():
 
-    def countdown(self, name):
+    def play_countdown(self, name):
         original_letters = []
         other_words = []
-        dictionary = Dictionary()
-        rachel = Rachel()
         points = 0
-
+        nine_letters = []
+        original_letters = []
         # retrieve array of letters
         nine_letters = rachel.give_the_letters(9)
         for l in nine_letters:
@@ -46,3 +48,6 @@ class Countdown():
             for word in other_words:
                 print("- "+word)
         return points
+
+   # def get_letters():
+    #    return 0
