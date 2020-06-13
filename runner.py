@@ -1,48 +1,26 @@
 # Charlie Conneely
 # Anagram game
 
-import dictionary_parser
-from rachel import Rachel
-from dictionary import Dictionary
+from countdown import Countdown
+from score_system import ScoreKeeper
 
 def main(name):
-    original_letters = []
-    other_words = []
-    dictionary = Dictionary()
-    rachel = Rachel()
+    rounds = 2
+    countdown = Countdown()
+    score_keeper = ScoreKeeper()
 
-    # retrieve array of letters
-    nine_letters = rachel.give_the_letters(9)
-    for l in nine_letters:
-        original_letters.append(l)
-    print(''.join(nine_letters).upper())
+    print("\nWe're going for best of "+str(rounds)+" rounds!")
+    print("At the moment the high score is 2000! Good luck!\n")
 
+    for x in range(rounds):
+        points = countdown.countdown(name)
+        score_keeper.score = score_keeper.increment_score(points)
 
-    input_word = input("Enter your word: ").lower()
-
-    # check if each letter sees itself on the board
-    found = dictionary.compare_words(nine_letters, input_word)
-
-    if found:
-        # check if the word is in the dictionary
-        message = dictionary.check_word(name, input_word)
-        print(message)
-    else:
-        print("This word isn't present!")
-
-    other_words = dictionary.find_other_words(original_letters)
-
-    if len(other_words) == 0:
-        print("\nWe didn't find anything worth noting!\n")
-    else:
-        other_words.sort(key=len, reverse=True)
-        print("\nHere are some words we found: ")
-        for word in other_words:
-            print("- "+word)
+    print("Score: " + str(score_keeper.score))
 
 def intro():
     name = str(input("Enter your name here: "))
-    print("Welcome "+name+"!\nLet's Play Countdown!!\n")
+    print("\nWelcome "+name+"!\nLet's Play Countdown!!\n")
     return name
 
 if __name__ == "__main__":

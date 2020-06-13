@@ -12,10 +12,11 @@ class Dictionary:
     def check_word(self, name, word):
         word = word.lower()
         if word in dictionary:
-            self.message = self.check_length(name, word)
+           # self.message = "Word not found in dictionary."
+            present = True
         else:
-            self.message = "Word not found in dictionary."
-        return self.message
+            present = False
+        return present
 
     def check_length(self, name, word):
         if (len(word) > 5):
@@ -31,7 +32,7 @@ class Dictionary:
             original_letters.append(l)
 
         for word in dictionary:
-            if (len(word) > 5):
+            if (len(word) > 4):
                 # clear array
                 letters = []
                 # restore array
