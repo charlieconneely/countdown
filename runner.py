@@ -9,6 +9,7 @@ score_keeper = ScoreKeeper()
 
 def main(name):
     rounds = 2
+    score_keeper.score = 0
 
     print("\nWe're going for best of "+str(rounds)+" rounds!")
     print("At the moment the high score is 2000! Good luck!\n")

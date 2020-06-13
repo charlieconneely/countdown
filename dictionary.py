@@ -9,10 +9,9 @@ class Dictionary:
         self.words = []
         self.message = ""
 
-    def check_word(self, name, word):
+    def check_dictionary(self, name, word):
         word = word.lower()
         if word in dictionary:
-           # self.message = "Word not found in dictionary."
             present = True
         else:
             present = False

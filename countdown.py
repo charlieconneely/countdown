@@ -12,8 +12,6 @@ class Countdown():
 
     def play_countdown(self, name):
         original_letters = []
-        other_words = []
-        points = 0
         nine_letters = []
         original_letters = []
         # retrieve array of letters
@@ -24,21 +22,15 @@ class Countdown():
 
         input_word = input("Enter your word: ").lower()
 
-        # check if each letter sees itself on the board
-        found = dictionary.compare_words(nine_letters, input_word)
+        points = self.check_word(nine_letters, input_word, name)
 
-        if found:
-            # check if the word is in the dictionary
-            present = dictionary.check_word(name, input_word)
-            if present:
-                message = dictionary.check_length(name, input_word)
-                print(message)
-                points = len(input_word)
-        else:
-            print("This word isn't present!")
+        self.display_other_words(original_letters)
 
-        other_words = dictionary.find_other_words(original_letters)
+        return points
 
+    def display_other_words(self, letters):
+        other_words = []
+        other_words = dictionary.find_other_words(letters)
         if len(other_words) == 0:
             print("\nWe didn't find anything worth noting!\n")
         else:
@@ -47,7 +39,20 @@ class Countdown():
             print("\nHere are some words we found: ")
             for word in other_words:
                 print("- "+word)
+
+    def check_word(self, letters, word, name):
+        points = 0
+        # check if each letter sees itself on the board
+        found = dictionary.compare_words(letters, word)
+        if found:
+            # check if the word is in the dictionary
+            present = dictionary.check_dictionary(name, word)
+            if present:
+                print(dictionary.check_length(name, word))
+                points = len(word)
+            else:
+                print("Word not found in dictionary.")
+        else:
+            print("This word isn't present!")
         return points
 
-   # def get_letters():
-    #    return 0
