@@ -18,6 +18,8 @@ def main(name):
         points = countdown.play_countdown(name)
         score_keeper.score = score_keeper.increment_score(points)
 
+    score_keeper.check_ranking(name)
+
     print("Score: " + str(score_keeper.score))
 
 def intro():
