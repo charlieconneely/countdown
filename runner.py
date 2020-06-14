@@ -17,8 +17,8 @@ def main(name):
     for x in range(rounds):
         points = countdown.play_countdown(name)
         score_keeper.score = score_keeper.increment_score(points)
+    print("\nTotal Score: " + str(score_keeper.score))
     score_keeper.check_ranking(name)
-    print("Score: " + str(score_keeper.score))
 
 def intro():
     name = str(input("Enter your name here: "))

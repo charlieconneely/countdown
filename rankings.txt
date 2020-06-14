@@ -1,8 +1,5 @@
 7 Charlie
 6 David
 5 Kyle
-12 Alan
 3 Jake
-4 Mike
-1 Andy
 9 Edward
