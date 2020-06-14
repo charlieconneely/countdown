@@ -17,9 +17,7 @@ def main(name):
     for x in range(rounds):
         points = countdown.play_countdown(name)
         score_keeper.score = score_keeper.increment_score(points)
-
     score_keeper.check_ranking(name)
-
     print("Score: " + str(score_keeper.score))
 
 def intro():
@@ -33,7 +31,6 @@ if __name__ == "__main__":
     while True:
         if ready_to_play:
             main(name)
-
         choice = input("\nWould you like to play again? (y/n):")
         choice = choice.lower()
         if choice not in ["y", "n"]:

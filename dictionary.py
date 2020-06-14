@@ -46,7 +46,6 @@ class Dictionary:
 
     def compare_words(self, letters, word):
         found = True
-
         split_word = list(word)
         for c in split_word:
             if c in letters:
@@ -54,7 +53,6 @@ class Dictionary:
             else:
                 found = False
                 break
-
         return found
 
 
