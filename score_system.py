@@ -11,7 +11,6 @@ class ScoreKeeper:
         return self.score
 
     def check_ranking(self, name):
-        x=0
         self.populate_scores_dict("rankings.txt")
         # check if current score ranks in the top 5
         intop5 = self.check_top_five()
@@ -19,12 +18,16 @@ class ScoreKeeper:
         if intop5:
             self.highscores[int(self.score)] = str(name)
             self.highscores = sorted(self.highscores.items(), reverse=True)
-            print("\nNew Rankings:")
-            for key, val in self.highscores:
-                print(str(val)+" - "+str(key))
-                x+=1
-                if x==5: break
+            self.print_rankings()
             # append text file with new dictionary
+
+    def print_rankings(self):
+        x=0
+        print("\nNew Rankings:")
+        for key, val in self.highscores:
+            print(str(val)+" - "+str(key))
+            x+=1
+            if x==5: break
 
     def populate_scores_dict(self, scores_file):
         x = 0
