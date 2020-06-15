@@ -3,7 +3,7 @@
 
 class ScoreKeeper:
     def __init__(self):
-        self.highscores = {}
+        self.highscores = dict()
         self.score = 0
 
     def increment_score(self, points):
@@ -20,6 +20,7 @@ class ScoreKeeper:
             self.highscores = sorted(self.highscores.items(), reverse=True)
             self.print_rankings()
             # append text file with new dictionary
+            self.append_rankings_file("rankings.txt")
 
     def print_rankings(self):
         x=0
@@ -28,6 +29,14 @@ class ScoreKeeper:
             print(str(val)+" - "+str(key))
             x+=1
             if x==5: break
+
+    def append_rankings_file(self, rfile):
+        x=0
+        with open(rfile, 'w') as f:
+            for key, val in self.highscores:
+                x+=1
+                print(str(key) + " " + str(val), file=f)
+                if x==5: break
 
     def populate_scores_dict(self, scores_file):
         x = 0
@@ -42,6 +51,9 @@ class ScoreKeeper:
     def check_top_five(self):
         isTopFive = False
         for key, val in self.highscores.items():
+            if int(key) == self.score:
+                isTopFive = False
+                break
             if self.score > int(key):
                 isTopFive = True
         return isTopFive
