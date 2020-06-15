@@ -1,5 +1,5 @@
-8 charliec
-7 Jembob
-6 jayp
-5 katem
-4 judy
+charliec 7
+Jembob 6
+jayp 5
+katem 4
+judy 3

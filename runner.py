@@ -3,22 +3,24 @@
 
 from countdown import Countdown
 from score_system import ScoreKeeper
+from player import Player
 
 countdown = Countdown()
 score_keeper = ScoreKeeper()
 
 def main(name):
     rounds = 2
-    score_keeper.score = 0
+    player = Player(name, 0)
 
     print("\nWe're going for best of "+str(rounds)+" rounds!")
     print("At the moment the high score is 2000! Good luck!\n")
 
     for x in range(rounds):
-        points = countdown.play_countdown(name)
-        score_keeper.score = score_keeper.increment_score(points)
-    print("\nTotal Score: " + str(score_keeper.score))
-    score_keeper.check_ranking(name)
+        points = countdown.play_countdown(player.name)
+        player.score += points
+
+    score_keeper.check_ranking(player)
+    print("Total Score: " + str(player.score))
 
 def intro():
     name = str(input("Enter your name here: "))

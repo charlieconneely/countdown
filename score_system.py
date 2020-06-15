@@ -1,26 +1,16 @@
 # Charlie Conneely
 # Score Keeper
 
+from player import Player
+
 class ScoreKeeper:
     def __init__(self):
-        self.highscores = dict()
-        self.score = 0
+        self.highscores = []
 
-    def increment_score(self, points):
-        self.score += points
-        return self.score
-
-    def check_ranking(self, name):
-        self.populate_scores_dict("rankings.txt")
-        # check if current score ranks in the top 5
-        intop5 = self.check_top_five()
-        # if true, append/overwrite to that position
-        if intop5:
-            self.highscores[int(self.score)] = str(name)
-            self.highscores = sorted(self.highscores.items(), reverse=True)
-            self.print_rankings()
-            # append text file with new dictionary
-            self.append_rankings_file("rankings.txt")
+    def check_ranking(self, p):
+        self.populate_ranks_array("rankings.txt")
+        for p in self.highscores:
+            print(p.name + " - " + str(p.score))
 
     def print_rankings(self):
         x=0
@@ -30,31 +20,9 @@ class ScoreKeeper:
             x+=1
             if x==5: break
 
-    def append_rankings_file(self, rfile):
-        x=0
-        with open(rfile, 'w') as f:
-            for key, val in self.highscores:
-                x+=1
-                print(str(key) + " " + str(val), file=f)
-                if x==5: break
-
-    def populate_scores_dict(self, scores_file):
-        x = 0
+    def populate_ranks_array(self, scores_file):
         with open(scores_file) as f:
             for line in f:
-                (key, val) = line.split()
-                self.highscores[int (key)] = val
-                x+=1
-                if x == 5:
-                    break
-
-    def check_top_five(self):
-        isTopFive = False
-        for key, val in self.highscores.items():
-            if int(key) == self.score:
-                isTopFive = False
-                break
-            if self.score > int(key):
-                isTopFive = True
-        return isTopFive
+                (n, s) = line.split()
+                self.highscores.append(Player(n,s))
 
