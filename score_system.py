@@ -5,24 +5,30 @@ from player import Player
 
 class ScoreKeeper:
     def __init__(self):
-        self.highscores = []
+        self.ranks = []
 
     def check_ranking(self, p):
         self.populate_ranks_array("rankings.txt")
-        for p in self.highscores:
+
+        # check score against rankings
+        self.compare_score(p)
+
+        for p in self.ranks:
             print(p.name + " - " + str(p.score))
 
-    def print_rankings(self):
-        x=0
-        print("\nNew Rankings:")
-        for key, val in self.highscores:
-            print(str(val)+" - "+str(key))
-            x+=1
-            if x==5: break
+    def compare_score(self, player):
+        does_rank = False
+        for p in self.ranks:
+            if (int(player.score) > int(p.score)):
+                does_rank = True
+        if does_rank:
+            self.ranks.append(player)
+            # sort array by ranks
+            self.ranks.sort(key=lambda p: int(p.score), reverse=True)
 
     def populate_ranks_array(self, scores_file):
         with open(scores_file) as f:
             for line in f:
                 (n, s) = line.split()
-                self.highscores.append(Player(n,s))
+                self.ranks.append(Player(n,s))
 
