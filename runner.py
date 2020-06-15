@@ -22,7 +22,7 @@ def main(name):
 
 def intro():
     name = str(input("Enter your name here: "))
-    print("\nWelcome "+name+"!\nLet's Play Countdown!!\n")
+    print("Welcome "+name+"!\nLet's Play Countdown!!\n")
     return name
 
 if __name__ == "__main__":
@@ -31,6 +31,7 @@ if __name__ == "__main__":
     while True:
         if ready_to_play:
             main(name)
+
         choice = input("\nWould you like to play again? (y/n):")
         choice = choice.lower()
         if choice not in ["y", "n"]:
