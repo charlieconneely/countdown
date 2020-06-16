@@ -13,14 +13,13 @@ def main(name):
     player = Player(name, 0)
 
     print("\nWe're going for best of "+str(rounds)+" rounds!")
-    print("At the moment the high score is 2000! Good luck!\n")
 
     for x in range(rounds):
         points = countdown.play_countdown(player.name)
         player.score += points
 
+    print("Total Score: " + str(player.score) + "\n")
     score_keeper.check_ranking(player)
-    print("Total Score: " + str(player.score))
 
 def intro():
     name = str(input("Enter your name here: "))

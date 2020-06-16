@@ -3,18 +3,30 @@
 
 from player import Player
 
+ranks_file = "rankings.txt"
+
 class ScoreKeeper:
+
     def __init__(self):
         self.ranks = []
 
     def check_ranking(self, p):
-        self.populate_ranks_array("rankings.txt")
+        self.populate_ranks_array(ranks_file)
 
         # check score against rankings
-        self.compare_score(p)
+        top5 = self.compare_score(p)
 
-        for p in self.ranks:
-            print(p.name + " - " + str(p.score))
+        if top5:
+            print("New Rankings:")
+            for p in self.ranks:
+                print(p.name + " - " + str(p.score))
+
+        self.append_file(ranks_file)
+
+    def append_file(self, rfile):
+        with open(rfile, "w") as file:
+            for p in self.ranks:
+                file.write(str(p.name) + " " + str(p.score) + "\n")
 
     def compare_score(self, player):
         does_rank = False
@@ -23,8 +35,11 @@ class ScoreKeeper:
                 does_rank = True
         if does_rank:
             self.ranks.append(player)
-            # sort array by ranks
+            # sort ranks array by scores
             self.ranks.sort(key=lambda p: int(p.score), reverse=True)
+            # remove the last item
+            self.ranks.pop()
+        return does_rank
 
     def populate_ranks_array(self, scores_file):
         with open(scores_file) as f:
