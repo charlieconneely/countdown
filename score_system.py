@@ -22,9 +22,10 @@ class ScoreKeeper:
                 print(p.name + " - " + str(p.score))
 
         self.append_file(ranks_file)
+        self.ranks = []
 
     def append_file(self, rfile):
-        with open(rfile, "w") as file:
+        with open(rfile, 'w') as file:
             for p in self.ranks:
                 file.write(str(p.name) + " " + str(p.score) + "\n")
 

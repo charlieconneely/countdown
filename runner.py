@@ -9,7 +9,7 @@ countdown = Countdown()
 score_keeper = ScoreKeeper()
 
 def main(name):
-    rounds = 2
+    rounds = 3
     player = Player(name, 0)
 
     print("\nWe're going for best of "+str(rounds)+" rounds!")
