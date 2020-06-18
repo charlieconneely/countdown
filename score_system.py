@@ -16,12 +16,26 @@ class ScoreKeeper:
         # check score against rankings
         top5 = self.compare_score(p)
 
-        if top5:
-            print("New Rankings:")
-            for p in self.ranks:
-                print(p.name + " - " + str(p.score))
+        x = 1
+        pos = 0
 
-        self.append_file(ranks_file)
+        if top5:
+            for i in self.ranks:
+                if i.name == p.name:
+                    pos = x
+                    break
+                x += 1
+            print("Well Done! You ranked no. " + str(pos))
+            print("\nNew Rankings:")
+            for i in self.ranks:
+                print(i.name + " - " + str(i.score))
+            self.append_file(ranks_file)
+        else:
+            print("Sorry, your score didn't rank top 5!")
+            print("Current Rankings:")
+            for i in self.ranks:
+                print(i.name + " - " + str(i.score))
+
         self.ranks = []
 
     def append_file(self, rfile):
