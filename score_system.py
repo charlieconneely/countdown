@@ -22,7 +22,7 @@ class ScoreKeeper:
             self.append_file(ranks_file)
         else:
             print("Sorry, your score didn't rank top 5!")
-            print("Current Rankings:")
+            print("\nCurrent Rankings:")
             for i in self.ranks:
                 print(i.name + " - " + str(i.score))
         # Clear ranks array
