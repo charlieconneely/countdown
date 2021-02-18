@@ -1,6 +1,10 @@
 # Charlie Conneely
 # Dictionary parser file
 
+"""
+Parse contents of file
+Return array of all words  
+"""
 def parse(f):
     file = open(f, "r")
     words = file.read().split()

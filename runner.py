@@ -8,6 +8,11 @@ from player import Player
 countdown = Countdown()
 score_keeper = ScoreKeeper()
 
+"""
+Call play_countdown in Countdown class
+Keep track of score
+Check rankings
+"""
 def main(name):
     rounds = 3
     player = Player(name, 0)
@@ -21,6 +26,11 @@ def main(name):
     print("Total Score: " + str(player.score) + "\n")
     score_keeper.check_ranking(player)
 
+"""
+Introduce game and collect player name 
+
+returns String - Player name
+"""
 def intro():
     name = str(input("Enter your name here: "))
     print("Welcome "+name+"!\nLet's Play Countdown!!\n")

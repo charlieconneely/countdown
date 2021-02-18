@@ -9,7 +9,12 @@ class Dictionary:
         self.words = []
         self.message = ""
 
-    def check_dictionary(self, name, word):
+    """
+    Check if word is present in dictionary array
+
+    returns Boolean
+    """
+    def check_dictionary(self, word):
         word = word.lower()
         if word in dictionary:
             present = True
@@ -17,6 +22,11 @@ class Dictionary:
             present = False
         return present
 
+    """
+    Check length of word
+    
+    returns String 
+    """
     def check_length(self, name, word):
         if (len(word) > 5):
             message = "Great work "+str(name)+"! Length: " + str(len(word))
@@ -24,6 +34,11 @@ class Dictionary:
             message = "Good job "+str(name)+"! Length: " + str(len(word))
         return message
 
+    """
+    Loop through all words (>4 chars) in dictionary
+
+    returns Array - Words which exist in the 9 letters
+    """
     def find_other_words(self, letters):
         original_letters = []
         self.words = []
@@ -44,6 +59,11 @@ class Dictionary:
                     self.words.append(word)
         return self.words
 
+    """
+    Compare word and letters character by character to check for a match
+
+    returns Boolean
+    """
     def compare_words(self, letters, word):
         found = True
         split_word = list(word)

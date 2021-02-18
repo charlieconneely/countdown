@@ -10,6 +10,9 @@ class ScoreKeeper:
     def __init__(self):
         self.ranks = []
 
+    """ 
+    Check if player score ranks against scores in rankings.txt
+    """
     def check_ranking(self, p):
         self.populate_ranks_array(ranks_file)
         # check score against rankings
@@ -28,11 +31,20 @@ class ScoreKeeper:
         # Clear ranks array
         self.ranks = []
 
+    """
+    Append ranks file with new score
+    """
     def append_file(self, rfile):
         with open(rfile, 'w') as file:
             for p in self.ranks:
                 file.write(str(p.name) + " " + str(p.score) + "\n")
 
+    """
+    Check if score beats that of any currently ranked players
+    If true - Add player to rankings, resort array, pop last item from the end. 
+
+    returns Boolean 
+    """
     def compare_score(self, player):
         does_rank = False
         for p in self.ranks:
@@ -46,6 +58,9 @@ class ScoreKeeper:
             self.ranks.pop()
         return does_rank
 
+    """ 
+    Populate local array with scores from txt file
+    """
     def populate_ranks_array(self, scores_file):
         with open(scores_file) as f:
             for line in f:

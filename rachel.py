@@ -4,6 +4,9 @@ class Rachel:
     def __init__(self):
         self.letters = []
 
+    """
+    returns Char - Random vowel
+    """
     def __get_random_vowel(self):
         vowels = ['a','e','i','o','u']
         # generate random number
@@ -12,6 +15,9 @@ class Rachel:
         letter = vowels[random_number]
         return letter
 
+    """
+    returns Char - Random consonant
+    """
     def __get_random_consonant(self):
         consonants = ['b','c','d','f','g','h','j','k','l','m',
                       'n','p','q','r','s','t','v','x','z','w','y']
@@ -21,6 +27,11 @@ class Rachel:
         letter = consonants[random_number]
         return letter
 
+    """
+    Prompt player to enter 9 letters
+
+    returns Array - 9 letters
+    """
     def give_the_letters(self, number_of_letters):
         self.letters = []
         print("\nRachel, the letters please!\n")

@@ -10,6 +10,14 @@ rachel = Rachel()
 
 class Countdown():
 
+    """
+    Retrieve random nine letters from Rachel class
+    Output letters to console
+    Receive input word
+    Calculate points by calling check_word
+    Call display_other_words
+    return points
+    """
     def play_countdown(self, name):
         original_letters = []
         nine_letters = []
@@ -25,6 +33,10 @@ class Countdown():
 
         return points
 
+    """
+    Collect potential words from dictionary class
+    Output results to console
+    """
     def display_other_words(self, letters):
         other_words = []
         other_words = dictionary.find_other_words(letters)
@@ -37,13 +49,17 @@ class Countdown():
             for word in other_words:
                 print("- "+word)
 
+    """
+    Check if word exists in the nine letters
+    Check if word exists in dictionary
+    """
     def check_word(self, letters, word, name):
         points = 0
         # check if each letter sees itself on the board
         found = dictionary.compare_words(letters, word)
         if found:
             # check if the word is in the dictionary
-            present = dictionary.check_dictionary(name, word)
+            present = dictionary.check_dictionary(word) 
             if present:
                 print(dictionary.check_length(name, word))
                 points = len(word)
