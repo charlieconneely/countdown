@@ -26,8 +26,14 @@ class Countdown():
         nine_letters = rachel.give_the_letters(9)
         for l in nine_letters:
             original_letters.append(l)
-        print(''.join(nine_letters).upper())
-        input_word = input("Enter your word: ").lower()
+        
+        # Output the nine letters
+        nine_letter_word = '\n'
+        for l in original_letters:
+            nine_letter_word += ' ' + l.upper()
+        print(nine_letter_word)
+
+        input_word = input("\nEnter your word: ").lower()
         points = self.check_word(nine_letters, input_word, name)
         self.display_other_words(original_letters)
 
