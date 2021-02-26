@@ -1,3 +1,6 @@
+# Charlie Conneely
+# rachel.py - delivers the letters 
+
 from random import randint
 
 class Rachel:
