@@ -1,5 +1,5 @@
-charlie 14
-Jon Snow 14
-lucas 13
-Damo 13
-jakey 11
+seanMC 14
+JonSnow 14
+Charlie 13
+lucas 10
+Damo 9
