@@ -1,27 +1,28 @@
 # Charlie Conneely
 
-import dictionary_parser
+import requests, dictionary_parser
 
 dictionary = dictionary_parser.parse("words.txt")
 
 class Dictionary:
     def __init__(self):
         self.words = []
-        self.message = ""
+        self.message = ''
 
     """
-    Check if word is present in dictionary array
+    Check if word exists
 
     returns Boolean
     """
     def check_dictionary(self, word):
-        word = word.lower()
-        if word in dictionary:
-            present = True
-        else:
-            present = False
-        return present
-
+        url = f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}'
+        response = requests.get(url)
+        if response.status_code == 404:
+            return False
+        elif response.status_code >= 400:
+            print(f'API request failed with status {response.status_code}')
+            exit(0)
+        return True
     """
     Check length of word
     
@@ -29,9 +30,9 @@ class Dictionary:
     """
     def check_length(self, name, word):
         if (len(word) > 5):
-            message = "Great work "+str(name)+"! Length: " + str(len(word))
+            message = f'Great work {name}! Length: {str(len(word))}'
         else:
-            message = "Good job "+str(name)+"! Length: " + str(len(word))
+            message = f'Good job {name}! Length: {str(len(word))}'
         return message
 
     """
