@@ -4,6 +4,7 @@
 from countdown import Countdown
 from score_system import ScoreKeeper
 from player import Player
+from pangram import PangramFinder
 
 countdown = Countdown()
 score_keeper = ScoreKeeper()
@@ -33,6 +34,14 @@ returns String - Player name
 """
 def intro():
     name = str(input("Enter your name here: "))
+    if name == '1':
+        print('Entering pangram finder...')
+        letters = str(input('Enter all letters together: '))
+        centre_letter = str(input('Centre letter: '))
+        pangram_finder = PangramFinder(letters=letters, centre_letter=centre_letter)
+        pangram_finder.find_pangram()
+        exit(0)
+        
     print("Welcome "+name+"!\nLet's Play Countdown!!\n")
     return name
 

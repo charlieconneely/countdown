@@ -8,6 +8,7 @@ class Dictionary:
     def __init__(self):
         self.words = []
         self.message = ''
+        self.dictionary = dictionary
 
     """
     Check if word exists
@@ -38,7 +39,7 @@ class Dictionary:
     """
     Loop through all words (>4 chars) in dictionary
 
-    returns Array - Words which exist in the 9 letters
+    returns Array - Words that exist in the 9 letters
     """
     def find_other_words(self, letters):
         original_letters = []
@@ -48,7 +49,7 @@ class Dictionary:
             original_letters.append(l)
 
         for word in dictionary:
-            if (len(word) > 4):
+            if (len(word) >= 4):
                 # clear array
                 letters = []
                 # restore array

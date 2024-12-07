@@ -1,7 +1,6 @@
 # Charlie Conneely
 # Countdown.py
 
-import dictionary_parser
 from rachel import Rachel
 from dictionary import Dictionary
 
