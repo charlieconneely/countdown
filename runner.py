@@ -1,6 +1,3 @@
-# Charlie Conneely
-# Anagram game
-
 from countdown import Countdown
 from score_system import ScoreKeeper
 from player import Player

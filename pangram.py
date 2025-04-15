@@ -42,17 +42,20 @@ class PangramFinder():
 
         for word in self.d.dictionary:
             if len(list(word)) < 4: continue
+            if self.centre_letter not in word:
+                continue
             match = True
             for letter in list(word):
                 if letter.lower() not in self.letters:
                     match = False
                     break
-            if match == True:
+            if match:
                 others.append(word)
 
         if len(others) == 0:
             print('No other notable words found.')
         else:
+            others = sorted(others, key=len)
             print('Other notable words found:')
             for o in others:
                 print(f'- {o}')

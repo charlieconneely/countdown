@@ -1,8 +1,6 @@
-# Charlie Conneely
-
 import requests, dictionary_parser
 
-dictionary = dictionary_parser.parse("words.txt")
+dictionary = dictionary_parser.parse('words.txt')
 
 class Dictionary:
     def __init__(self):
@@ -31,10 +29,8 @@ class Dictionary:
     """
     def check_length(self, name, word):
         if (len(word) > 5):
-            message = f'Great work {name}! Length: {str(len(word))}'
-        else:
-            message = f'Good job {name}! Length: {str(len(word))}'
-        return message
+            return f'Great work {name}! Length: {str(len(word))}'
+        return f'Good job {name}! Length: {str(len(word))}'
 
     """
     Loop through all words (>4 chars) in dictionary
